@@ -1,19 +1,26 @@
 <script>
-	import Button from "./components/button.svelte";
-	import Count from "./components/count.svelte";
+	let auth = {
+		loggedIn: false,
+		loggedUser: null,
+	};
+	let userNameInput = "";
 
-	let count = 0;
-	$: doubled = count * 2;
+	const loginHandle = () => {
+		auth.loggedIn = true;
+		if (userNameInput != "") {
+			auth.loggedUser = userNameInput;
+		}
+	};
 
-	$: if (count >= 10) {
-		alert("카운트가 10이 되었습니다!");
-		count = 0;
-	}
-
-	const handleClick = () => {
-		count += 1;
+	const logoutHandle = () => {
+		auth.loggedIn = false;
 	};
 </script>
 
-<Button {count} {handleClick} />
-<Count {count} {doubled} />
+{#if !auth.loggedIn}
+	<input type="text" bind:value={userNameInput} />
+	<button on:click={loginHandle}>Login</button>
+{:else}
+	<input type="text" bind:value={userNameInput} disabled />
+	<button on:click={logoutHandle}>Logout</button>
+{/if}
