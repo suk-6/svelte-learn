@@ -1,26 +1,15 @@
 <script>
-	let todos = [
-		{
-			id: 1,
-			content: "할일1",
-			isDone: false,
-		},
-		{
-			id: 2,
-			content: "할일2",
-			isDone: false,
-		},
-		{
-			id: 3,
-			content: "할일3",
-			isDone: false,
-		},
-		{
-			id: 4,
-			content: "할일4",
-			isDone: false,
-		},
-	];
+	let todos = [];
+
+	(() => {
+		for (let i = 1; i < 5; i++) {
+			todos.push({
+				id: i,
+				content: `할일 ${i}`,
+				isDone: false,
+			});
+		}
+	})();
 
 	const changeState = (todo) => {
 		for (let i = 0; i < todos.length; i++) {
