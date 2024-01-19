@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	let todos = [];
 
 	(() => {
@@ -11,9 +11,9 @@
 		}
 	})();
 
-	const changeState = (todo) => {
+	const changeState = (todo: object) => {
 		for (let i = 0; i < todos.length; i++) {
-			if (todos[i].id == todo.id) {
+			if (todos[i].id === todo.id) {
 				todos[i].isDone = !todo.isDone;
 			}
 		}
