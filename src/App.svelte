@@ -6,7 +6,7 @@
 
 	$: if ($count < 0) {
 		alert("0 이하는 금지!");
-		$count = 0;
+		count.set(0);
 	}
 </script>
 
