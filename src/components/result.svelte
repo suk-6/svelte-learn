@@ -1,5 +1,13 @@
 <script>
 	import { count } from "../stores";
+
+	let visibleValue;
+
+	(() => {
+		count.subscribe((value) => {
+			visibleValue = value;
+		});
+	})();
 </script>
 
-<p>{$count}</p>
+<p>{visibleValue}</p>
